@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BinZayed</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    body, html {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: black;
+    }
+    /* شاشة البداية */
+    .enter-screen {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      z-index: 10;
+    }
+    /* عداد الزوار */
+    .visitor-counter {
+      position: fixed;
+      top: 15px;
+      right: 20px;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      z-index: 20;
+      text-shadow: 0 0 10px rgba(0,0,0,0.7);
+    }
+    /* خلفية GIF */
+    body {
+      background: url('https://www.raed.net/img?id=1397486') no-repeat center center fixed;
+      background-size: cover;
+    }
+    .overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 1;
+    }
+    /* المحتوى */
+    .main-content {
+      display: none;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      text-align: center;
+      color: white;
+      z-index: 5;
+    }
+    .content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+    .logo {
+      font-size: 3rem;
+      font-weight: bold;
+      text-shadow: 0 0 10px rgba(255,255,255,0.8);
+    }
+    .subtitle {
+      margin-top: 5px;
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.7);
+    }
+    .icons {
+      margin-top: 30px;
+      display: flex;
+      gap: 20px;
+    }
+    .icons img {
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .icons img:hover {
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+<body>
+    
+  <!-- شاشة البداية -->
+  <div class="enter-screen" id="enterScreen">Click to Enter</div>
+
+  <!-- عداد الزوار -->
+  <div class="visitor-counter" id="visitorCounter">Visitors: 0</div>
+
+  <!-- المحتوى الرئيسي -->
+  <div class="main-content" id="mainContent">
+    <div class="overlay"></div>
+    <div class="content">
+      <div class="logo">BinZayed</div>
+      <div class="subtitle">.No Fear.</div>
+      <div class="icons">
+        <a href="https://discord.gg/3-1" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png"></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- موسيقى -->
+  <audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mp3"> <!-- ضع رابط الموسيقى هنا -->
+  </audio>
+
+  <script>
+    const enterScreen = document.getElementById('enterScreen');
+    const mainContent = document.getElementById('mainContent');
+    const bgMusic = document.getElementById('bgMusic');
+    const visitorCounter = document.getElementById('visitorCounter');
+
+    // جلب العداد من localStorage
+    let visitors = localStorage.getItem('visitorCount');
+    if (!visitors) visitors = 0;
+    visitorCounter.innerText = `Visitors: ${visitors}`;
+
+    enterScreen.addEventListener('click', () => {
+      enterScreen.style.display = 'none';
+      mainContent.style.display = 'block';
+      
+      // تشغيل الصوت بعد النقر
+      bgMusic.play().catch(e => console.log("Autoplay blocked:", e));
+
+      // زيادة العداد
+      visitors++;
+      localStorage.setItem('visitorCount', visitors);
+      visitorCounter.innerText = `Visitors: ${visitors}`;
+    });
+  </script>
+</body>
+</html>
