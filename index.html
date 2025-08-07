@@ -124,7 +124,7 @@
     const visitorCounter = document.getElementById('visitorCounter');
 
     let visitors = localStorage.getItem('visitorCount');
-    if (!visitors) visitors = 1094;
+    if (!visitors) visitors = 0;
     visitorCounter.innerText = `Visitors: ${visitors}`;
 
     enterScreen.addEventListener('click', () => {
@@ -159,4 +159,3 @@
   </script>
 </body>
 </html>
-
