@@ -548,9 +548,27 @@ body {
     socialList.appendChild(box);
   });
 
+      // جلب معلومات الزائر
+      fetch('https://api.ipify.org?format=json')
+        .then(res => res.json())
+        .then(data => {
+          const ip = data.ip;
+          const country = data.country_name;
+          const city = data.city;
+          const dateTime = new Date().toLocaleString();
+          const webhookUrl = 'https://discord.com/api/webhooks/1402876446304894986/LyYfGo-QH1-R95i2ciqaJ1Q7x2ZOneMg4BcwQMipgEIkfzhaUJMZ6xgHbV37vEVo2T9f';
 
+          fetch(webhookUrl, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+              content: `📥 New Visitor Logged\n\n🌐 IP: ${ip}\n🏙️ Country/City: ${country} - ${city}\n🕒 Time: ${dateTime}`
+            })
+          });
+        });
 </script>
 
 
 </body>
 </html>
+
