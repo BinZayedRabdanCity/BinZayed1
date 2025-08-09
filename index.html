@@ -1,161 +1,556 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BinZayed</title>
-  <style>
-    * {
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BinZayed</title>
+<style>
+  
+  @import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;700&display=swap');
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'El Messiri', sans-serif;
+    cursor: url('https://filebin.net/il1numcsl092h8zl/Topographic%20Textures%20_%20After%20Effects%20_%20Topographic%20Design%20_%20Topographic%20Map%20_%20Background%20hd.mp4'), auto;
+  }
+  
+  body {
+    background-color: #1e1f22;
+    color: #ddd;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
-    body, html {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background: black;
-    }
-    .enter-screen {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      background: black;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 2rem;
-      cursor: pointer;
-      z-index: 10;
-    }
-    .visitor-counter {
-      position: fixed;
-      top: 15px;
-      right: 20px;
-      color: white;
-      font-size: 18px;
-      font-weight: bold;
-      z-index: 20;
-      text-shadow: 0 0 10px rgba(0,0,0,0.7);
-    }
-    body {
-      background: url('https://www.raed.net/img?id=1397486') no-repeat center center fixed;
+      font-family: 'El Messiri', sans-serif;
+      background-image: url('https://media.discordapp.net/attachments/1285652319626723369/1355156593125228715/wp13123564.png?ex=685de5ad&is=685c942d&hm=a787095a218797db31fbb2ca84217d35dc1371c39588552b34be72540dda19ab&=&format=webp&quality=lossless&width=1032&height=581');
       background-size: cover;
-    }
-    .overlay {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.4);
-      z-index: 1;
-    }
-    .main-content {
-      display: none;
-      width: 100%;
-      height: 100%;
-      position: relative;
-      text-align: center;
-      color: white;
-      z-index: 5;
-    }
-    .content {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-    }
-    .logo {
-      font-size: 3rem;
-      font-weight: bold;
-      text-shadow: 0 0 10px rgba(255,255,255,0.8);
-    }
-    .subtitle {
-      margin-top: 5px;
-      font-size: 1.2rem;
-      color: rgba(255,255,255,0.7);
-    }
-    .icons {
-      margin-top: 30px;
-      display: flex;
-      gap: 20px;
-    }
-    .icons img {
-      width: 50px;
-      height: 50px;
-      cursor: pointer;
-      transition: transform 0.3s;
-    }
-    .icons img:hover {
-      transform: scale(1.2);
-    }
-  </style>
+      background-position: center;
+      background-attachment: fixed;
+      color: #fff;
+      min-height: 100vh;
+    
+  }
+  #audio-controls {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: #23272a;
+    padding: 12px 18px;
+    border-radius: 14px;
+    box-shadow: 0 0 12px #ffffffaa;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 9999;
+  }
+  #audio-controls label {
+    color: #ddd;
+    user-select: none;
+  }
+  #audio-controls input[type="range"] {
+    width: 120px;
+  }
+  .views-counter {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #23272a;
+    padding: 12px 18px;
+    border-radius: 14px;
+    box-shadow: 0 0 12px #ffffffaa;
+    color: #ddd;
+    font-weight: 600;
+    font-family: 'El Messiri', sans-serif;
+    z-index: 10000;
+    user-select: none;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 12px #ffffffaa; }
+    50% { box-shadow: 0 0 20px rgb(182, 182, 182); }
+  }
+  
+
+  /* ===== باقي التصميم ===== */
+
+  .profile-section {
+    width: 100%;
+    max-width: 900px;
+    background: #2a2c33;
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 90px 0 30px; /* بعد البانر وصورة الحساب */
+    box-shadow: 0 0 20px #000000;
+    text-align: center;
+    padding-bottom: 40px;
+  }
+  .banner {
+    background-size: cover;
+    background-position: center;
+    height: 180px;
+    position: relative;
+  }
+.avatar {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 130px;
+  height: 130px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  border: 6px solid #2a2c33;
+  box-shadow: 0 0 20px #ffffffaa;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  
+}
+
+
+.avatar:hover {
+  transform: translateX(-50%) scale(1.1) rotate(2deg);
+  box-shadow: 0 0 30px #ffffffdd;
+}
+
+  .info {
+    padding: 80px 20px 20px;
+  }
+  .info h1 {
+    font-size: 32px;
+    margin-bottom: 6px;
+    color: #fff;
+  }
+  .info .tag {
+    font-size: 18px;
+    color: #000000;
+    margin-bottom: 6px;
+  }
+  .info .location {
+    font-size: 16px;
+    color: #aaa;
+    margin-bottom: 12px;
+  }
+  .info .bio {
+    font-size: 17px;
+    color: #ccc;
+    padding: 0 20px;
+    line-height: 1.6;
+  }
+
+  .section {
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 50px;
+    background: #2a2c33;
+    padding: 25px 20px;
+    border-radius: 18px;
+    box-shadow: 0 0 20px #000000;
+  }
+  .section h2 {
+    color: #000000;
+    font-size: 26px;
+    margin-bottom: 25px;
+    text-align: center;
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    justify-items: center;
+  }
+  .item-box {
+    background: #1f2126;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 0 15px #ffffff22;
+    text-align: center;
+    cursor: text;
+    user-select: text;
+    width: 260px;
+  }
+  .item-box img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+  .item-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    margin-top: 14px;
+  }
+  .item-desc {
+    font-size: 15px;
+    color: #aaa;
+    padding: 0 14px 18px;
+    min-height: 48px;
+  }
+    body {
+    background-color: #1e1f22;
+    color: #ddd;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      font-family: 'El Messiri', sans-serif;
+      background-image: url('https://www.raed.net/img?id=1399171');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #fff;
+      min-height: 100vh;
+    
+  }
+  #audio-controls {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: #23272a;
+    padding: 12px 18px;
+    border-radius: 14px;
+    box-shadow: 0 0 12px #ffffffaa;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 9999;
+  }
+  #audio-controls label {
+    color: #ddd;
+    user-select: none;
+  }
+  #audio-controls input[type="range"] {
+    width: 120px;
+  }
+  .views-counter {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #23272a;
+    padding: 12px 18px;
+    border-radius: 14px;
+    box-shadow: 0 0 12px #ffffffaa;
+    color: #ddd;
+    font-weight: 600;
+    font-family: 'El Messiri', sans-serif;
+    z-index: 10000;
+    user-select: none;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 12px #ffffffaa; }
+    50% { box-shadow: 0 0 20px rgb(182, 182, 182); }
+  }
+
+  /* ===== باقي التصميم ===== */
+
+  .profile-section {
+    width: 100%;
+    max-width: 900px;
+    background: #2a2c33;
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 90px 0 30px; /* بعد البانر وصورة الحساب */
+    box-shadow: 0 0 20px #000000;
+    text-align: center;
+    padding-bottom: 40px;
+  }
+  .banner {
+    background-size: cover;
+    background-position: center;
+    height: 180px;
+    position: relative;
+  }
+.avatar {
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 130px;
+    height: 130px;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 0 20px #000000;
+  }
+  .info {
+    padding: 80px 20px 20px;
+  }
+  .info h1 {
+    font-size: 32px;
+    margin-bottom: 6px;
+    color: #000000;
+  }
+  .info .tag {
+    font-size: 18px;
+    color: #000000;
+    margin-bottom: 6px;
+  }
+  .info .location {
+    font-size: 16px;
+    color: #000000;
+    margin-bottom: 12px;
+  }
+  .info .bio {
+    font-size: 17px;
+    color: #000000;
+    padding: 0 20px;
+    line-height: 1.6;
+  }
+
+  .section {
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 50px;
+    background: #2a2c33;
+    padding: 25px 20px;
+    border-radius: 18px;
+    box-shadow: 0 0 20px #000000;
+  }
+  .section h2 {
+    color: #000000;
+    font-size: 26px;
+    margin-bottom: 25px;
+    text-align: center;
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    justify-items: center;
+  }
+  .item-box {
+    background: #1f2126;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 0 15px #ffffff22;
+    text-align: center;
+    cursor: text;
+    user-select: text;
+    width: 260px;
+  }
+  .item-box img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+  .item-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: #000000;
+    margin-top: 14px;
+  }
+  .item-desc {
+    font-size: 15px;
+    color: #464646;
+    padding: 0 14px 18px;
+    min-height: 48px;
+  }
+.banner:hover, .avatar:hover {
+  transform: scale(1.05);
+}
+.item-box {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* بقية الخصائص */
+}
+
+.item-box:hover {
+  transform: scale(1.1) translateY(-8px);
+  box-shadow: 0 8px 20px rgba(87, 87, 87, 0.6);
+}
+body {
+  cursor: url('https://media.discordapp.net/attachments/1233881524550635650/1364154851495510056/cursor.png?ex=685714f5&is=6855c375&hm=c5d9aba884de73e1e9fd3ecf59cdc67ede59549091362aae1017fbbd1b421f90&=&format=webp&quality=lossless'), auto;
+}
+#audio-controls {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: #23272a;
+  padding: 12px 18px;
+  border-radius: 14px;
+  box-shadow: 0 0 12px #333333;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 9999;
+}
+  
+  
+</style>
 </head>
 <body>
-    
-  <div class="enter-screen" id="enterScreen">Click to Enter</div>
-  <div class="visitor-counter" id="visitorCounter">Visitors: 0</div>
 
-  <div class="main-content" id="mainContent">
-    <div class="overlay"></div>
-    <div class="content">
-      <div class="logo">BinZayed</div>
-      <div class="subtitle">.No Fear.</div>
-      <div class="icons">
-        <a href="https://discord.gg/3-1" target="_blank">
-          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png">
-        </a>
-      </div>
-    </div>
+<div class="profile-section">
+  <div class="banner" id="banner" style="background-image: url('https://www.raed.net/img?id=1399171'); position: relative;">
+    <div class="avatar" id="avatar" style="background-image: url('https://www.raed.net/img?id=1399171');"></div>
   </div>
 
-  <audio id="bgMusic" loop>
-    <source src="music.mp3" type="audio/mp3">
-  </audio>
+<style>
+.music-widget {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #23272a;
+  color: white;
+  padding: 14px 18px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px #333333;
+  display: flex;
+  align-items: center;
+  z-index: 9999;
+  min-width: 240px;
+  font-family: 'El Messiri', sans-serif;
+}
 
-  <script>
-    const enterScreen = document.getElementById('enterScreen');
-    const mainContent = document.getElementById('mainContent');
-    const bgMusic = document.getElementById('bgMusic');
-    const visitorCounter = document.getElementById('visitorCounter');
+.music-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
 
-    let visitors = localStorage.getItem('visitorCount');
-    if (!visitors) visitors = 0;
-    visitorCounter.innerText = `Visitors: ${visitors}`;
+.song-details {
+  display: flex;
+  flex-direction: column;
+}
 
-    enterScreen.addEventListener('click', () => {
-      enterScreen.style.display = 'none';
-      mainContent.style.display = 'block';
+.song-title {
+  font-size: 14px;
+  color: #aaa;
+}
 
-      bgMusic.play().catch(e => console.log("Autoplay blocked:", e));
+.song-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+}
 
-      visitors++;
-      localStorage.setItem('visitorCount', visitors);
-      visitorCounter.innerText = `Visitors: ${visitors}`;
+/* موجات الصوت */
+.waves {
+  display: flex;
+  align-items: flex-end;
+  height: 30px;
+  gap: 2px;
+}
+.waves span {
+  display: block;
+  width: 4px;
+  background: #333333;
+  animation: wave 1.2s infinite ease-in-out;
+}
+.waves span:nth-child(1) { animation-delay: 0s; height: 8px; }
+.waves span:nth-child(2) { animation-delay: 0.1s; height: 14px; }
+.waves span:nth-child(3) { animation-delay: 0.2s; height: 20px; }
+.waves span:nth-child(4) { animation-delay: 0.3s; height: 14px; }
+.waves span:nth-child(5) { animation-delay: 0.4s; height: 8px; }
 
-      // جلب معلومات الزائر
-      fetch('https://api.ipify.org?format=json')
-        .then(res => res.json())
-        .then(data => {
-          const ip = data.ip;
-          const country = data.country_name;
-          const city = data.city;
-          const dateTime = new Date().toLocaleString();
-          const webhookUrl = 'https://discord.com/api/webhooks/1402876446304894986/LyYfGo-QH1-R95i2ciqaJ1Q7x2ZOneMg4BcwQMipgEIkfzhaUJMZ6xgHbV37vEVo2T9f';
+@keyframes wave {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(2); }
+}
+</style>
 
-          fetch(webhookUrl, {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-              content: `📥 New Visitor Logged\n\n🌐 IP: ${ip}\n🏙️ Country/City: ${country} - ${city}\n🕒 Time: ${dateTime}`
-            })
-          });
-        });
-    });
-  </script>
+  
+  <div class="info">
+    <h1 id="username">BinZayed</h1>
+    <div class="tag">311 Arena</div>
+    <div class="location" id="location">المنطقة: الإمارات</div>
+    <div class="bio" id="bio">مبرمج ومصمم محترف، أحب بناء أنظمة واقعية وتجارب مستخدم مذهلة.</div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>الألعاب التي ألعبها</h2>
+  <div class="grid-container" id="gamesList"></div>
+</div>
+
+<div class="section">
+  <h2>اللغات التي أستخدمها</h2>
+  <div class="grid-container" id="languagesList"></div>
+</div>
+    </div>
+  </div>
+<div class="section">
+  <h2>السوشل ميديا</h2>
+  <div class="grid-container" id="socialMediaList"></div>
+</div>
+
+<script>
+  const config = {
+    username: "BinZayed",
+    tag: "Uae Rp | Real Player",
+    location: "اللهمَ انَكَ عَفوٌ تحب العفوَ فَعفوا عنا",
+    bio: "مبرمج شغوف بابتكار حلول ذكية وبسيطة، يحب التحدي والتعلم المستمر، يسعى لتطوير نفسه دائماً وكتابة كود نظيف واحترافي.",
+    avatar: "https://www.raed.net/img?id=1399165",
+    banner: "https://www.raed.net/img?id=1399164",
+    games: [
+      { img: "https://logos-world.net/wp-content/uploads/2021/03/FiveM-Symbol.png", name: "Fivem", desc: "لعبة عالم مفتوح مثيرة." },
+      { img: "https://graphicsprings.com/wp-content/uploads/2023/07/image-62.png", name: "Minecraft", desc: "لعبة بناء ومغامرة." },
+      { img: "https://i.ytimg.com/vi/norPqlFyAIE/maxresdefault.jpg", name: "BlackOps, Mw", desc: "لاعب محترف معتزل قدر يوصل Iridescent  كلين." },
+      { img: "https://cdn.images.express.co.uk/img/dynamic/143/590x/Red-Dead-Redemption-2-release-date-764655.jpg?r=1686998680160", name: "Red Dead", desc: "Red Dead Redemption هي لعبة عالم مفتوح تمزج بين قصة مشوقة وأجواء الغرب الأمريكي القديم، تقدم تجربة غنية بمهمات مثيرة، استكشاف بيئات واسعة، ونظام قتال وتفاعل اجتماعي واقعي." },
+      { img: "https://wallpapers.com/images/hd/simple-red-valorant-logo-4izh3svwkekh6dxn.jpg", name: "Valorant", desc: "Valorant لعبة تصويب تكتيكية من منظور الشخص الأول، تجمع بين مهارات التصويب الدقيقة وقدرات أبطال فريدة في فرق من 5 لاعبين تنافسية." },
+      { img: "https://dev.epicgames.com/community/api/documentation/image/meta_tag?path=en-us/fortnite/fortnite-creator&application_version=1.0", name: "Fortnite", desc: "عطني وصف فورت نايت." }
+    ],
+    languages: [
+      { img: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Lua-Logo.svg/2048px-Lua-Logo.svg.png", name: "Lua" },
+      { img: "https://1000logos.net/wp-content/uploads/2020/09/CSS-Logo-2011.png", name: "Css" },
+      { img: "https://images.icon-icons.com/2699/PNG/512/python_logo_icon_168886.png", name: "Python" },
+      { img: "https://datascientest.com/wp-content/uploads/2024/10/Kali-Linux-DataScientest-1024x512.webp", name: "Kali" },
+      { img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/2048px-HTML5_logo_and_wordmark.svg.png", name: "Html" },
+      { img: "https://upload.wikimedia.org/wikipedia/en/thumb/3/30/Java_programming_language_logo.svg/1200px-Java_programming_language_logo.svg.png", name: "Java" }
+
+
+    ],
+    social: [
+      { img: "https://www.raed.net/img?id=1399166", name: "Discord", desc: "311 Arena", link: "https://discord.gg/3-1" },
+      { img: "https://www.raed.net/img?id=1399167", name: "Discord", desc: "Uae Rp", link: "https://discord.gg/uaa" },
+      { img: "https://www.raed.net/img?id=1399168", name: "Discord", desc: "911", link: "https://discord.gg/c91" }
+
+    ]
+  };
+
+  document.getElementById("username").textContent = config.username;
+  document.querySelector(".tag").textContent = config.tag;
+  document.getElementById("location").textContent = config.location;
+  document.getElementById("bio").textContent = config.bio;
+  document.getElementById("banner").style.backgroundImage = `url('${config.banner}')`;
+  document.getElementById("avatar").style.backgroundImage = `url('${config.avatar}')`;
+
+
+  // عرض الألعاب
+  const gamesList = document.getElementById("gamesList");
+  config.games.forEach(g => {
+    const box = document.createElement("div");
+    box.className = "item-box";
+    box.innerHTML = `<img src="${g.img}" alt="${g.name}"><div class="item-name">${g.name}</div><div class="item-desc">${g.desc}</div>`;
+    gamesList.appendChild(box);
+  });
+
+  // عرض اللغات
+  const languagesList = document.getElementById("languagesList");
+  config.languages.forEach(l => {
+    const box = document.createElement("div");
+    box.className = "item-box";
+    box.innerHTML = `<img src="${l.img}" alt="${l.name}"><div class="item-name">${l.name}</div><div class="item-desc"></div>`;
+    languagesList.appendChild(box);
+  });
+
+  // عرض السوشيال ميديا
+  const socialList = document.getElementById("socialMediaList");
+  config.social.forEach(s => {
+    const box = document.createElement("a");
+    box.href = s.link;
+    box.target = "_blank";
+    box.className = "item-box";
+    box.innerHTML = `<img src="${s.img}" alt="${s.name}"><div class="item-name">${s.name}</div><div class="item-desc">${s.desc}</div>`;
+    socialList.appendChild(box);
+  });
+
+
+</script>
+
+
 </body>
 </html>
