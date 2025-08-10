@@ -13,106 +13,68 @@
     cursor: url('https://filebin.net/il1numcsl092h8zl/Topographic%20Textures%20_%20After%20Effects%20_%20Topographic%20Design%20_%20Topographic%20Map%20_%20Background%20hd.mp4'), auto;
   }
   
-  body {
-    background-color: #1e1f22;
-    color: #ddd;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-      margin: 0;
-      padding: 0;
-      font-family: 'El Messiri', sans-serif;
-      background-image: url('https://media.discordapp.net/attachments/1285652319626723369/1355156593125228715/wp13123564.png?ex=685de5ad&is=685c942d&hm=a787095a218797db31fbb2ca84217d35dc1371c39588552b34be72540dda19ab&=&format=webp&quality=lossless&width=1032&height=581');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      color: #fff;
-      min-height: 100vh;
-    
-  }
-  #audio-controls {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    background: #23272a;
-    padding: 12px 18px;
-    border-radius: 14px;
-    box-shadow: 0 0 12px #ffffffaa;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    z-index: 9999;
-  }
-  #audio-controls label {
-    color: #ddd;
-    user-select: none;
-  }
-  #audio-controls input[type="range"] {
-    width: 120px;
-  }
-  .views-counter {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: #23272a;
-    padding: 12px 18px;
-    border-radius: 14px;
-    box-shadow: 0 0 12px #ffffffaa;
-    color: #ddd;
-    font-weight: 600;
-    font-family: 'El Messiri', sans-serif;
-    z-index: 10000;
-    user-select: none;
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 12px #ffffffaa; }
-    50% { box-shadow: 0 0 20px rgb(182, 182, 182); }
-  }
-  
 
-  /* ===== باقي التصميم ===== */
-
+  /* قسم البروفايل */
   .profile-section {
-    width: 100%;
     max-width: 900px;
+    width: 100%;
     background: #2a2c33;
     border-radius: 16px;
     overflow: hidden;
-    margin: 90px 0 30px; /* بعد البانر وصورة الحساب */
-    box-shadow: 0 0 20px #000000;
+    margin-top: 90px;
+    box-shadow: 0 0 20px #000;
     text-align: center;
     padding-bottom: 40px;
   }
   .banner {
+    height: 180px;
     background-size: cover;
     background-position: center;
-    height: 180px;
     position: relative;
   }
-.avatar {
-  position: absolute;
-  bottom: -60px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 130px;
-  height: 130px;
-  background-size: cover;
-  background-position: center;
-  border-radius: 50%;
-  border: 6px solid #2a2c33;
-  box-shadow: 0 0 20px #ffffffaa;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  
-}
+  .avatar {
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 130px;
+    height: 130px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    border: 6px solid #2a2c33;
+    box-shadow: 0 0 20px #fff5;
+    transition: 0.3s ease;
+  }
+  .avatar:hover {
+    transform: translateX(-50%) scale(1.1);
+    box-shadow: 0 0 30px #fff8;
+  }
 
+  /* النصوص */
+  .info {
+    padding: 80px 20px 20px;
+  }
+  .info h1 {
+    font-size: 32px;
+    margin-bottom: 6px;
+  }
+  .info .tag {
+    font-size: 18px;
+    color: #ccc;
+    margin-bottom: 6px;
+  }
+  .info .location {
+    font-size: 16px;
+    color: #aaa;
+    margin-bottom: 12px;
+  }
+  .info .bio {
+    font-size: 17px;
+    color: #ddd;
+    line-height: 1.6;
+  }
 
-.avatar:hover {
-  transform: translateX(-50%) scale(1.1) rotate(2deg);
-  box-shadow: 0 0 30px #ffffffdd;
-}
 
   .info {
     padding: 80px 20px 20px;
@@ -378,7 +340,8 @@ body {
   z-index: 9999;
 }
   
-  
+
+
 </style>
 </head>
 <body>
@@ -491,18 +454,7 @@ body {
       { img: "https://i.ytimg.com/vi/norPqlFyAIE/maxresdefault.jpg", name: "BlackOps, Mw", desc: "لاعب محترف معتزل قدر يوصل Iridescent  كلين." },
       { img: "https://cdn.images.express.co.uk/img/dynamic/143/590x/Red-Dead-Redemption-2-release-date-764655.jpg?r=1686998680160", name: "Red Dead", desc: "Red Dead Redemption هي لعبة عالم مفتوح تمزج بين قصة مشوقة وأجواء الغرب الأمريكي القديم، تقدم تجربة غنية بمهمات مثيرة، استكشاف بيئات واسعة، ونظام قتال وتفاعل اجتماعي واقعي." },
       { img: "https://wallpapers.com/images/hd/simple-red-valorant-logo-4izh3svwkekh6dxn.jpg", name: "Valorant", desc: "Valorant لعبة تصويب تكتيكية من منظور الشخص الأول، تجمع بين مهارات التصويب الدقيقة وقدرات أبطال فريدة في فرق من 5 لاعبين تنافسية." },
-      { img: "https://dev.epicgames.com/community/api/documentation/image/meta_tag?path=en-us/fortnite/fortnite-creator&application_version=1.0", name: "Fortnite", desc: "فورت نايت لعبة باتل رويال حماسية تجمع بين القتال والبناء السريع، حيث يتنافس 100 لاعب في خريطة واسعة ليكونوا آخر الناجين. تتميز برسومات كرتونية مميزة، تحديثات مستمرة، وأحداث حية تجعل كل مباراة تجربة فريدة وممتعة.
-
-
-
-
-
-
-
-
-
-Ask ChatGPT
-." }
+      { img: "https://dev.epicgames.com/community/api/documentation/image/meta_tag?path=en-us/fortnite/fortnite-creator&application_version=1.0", name: "Fortnite", desc: "فورت نايت لعبة باتل رويال حماسية تجمع بين القتال والبناء السريع، حيث يتنافس 100 لاعب في خريطة واسعة ليكونوا آخر الناجين. تتميز برسومات كرتونية مميزة، تحديثات مستمرة، وأحداث حية تجعل كل مباراة تجربة فريدة وممتعة." }
     ],
     languages: [
       { img: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Lua-Logo.svg/2048px-Lua-Logo.svg.png", name: "Lua" },
@@ -559,28 +511,9 @@ Ask ChatGPT
     socialList.appendChild(box);
   });
 
-      // جلب معلومات الزائر
-      fetch('https://api.ipify.org?format=json')
-        .then(res => res.json())
-        .then(data => {
-          const ip = data.ip;
-          const country = data.country_name;
-          const city = data.city;
-          const dateTime = new Date().toLocaleString();
-          const webhookUrl = 'https://discord.com/api/webhooks/1402876446304894986/LyYfGo-QH1-R95i2ciqaJ1Q7x2ZOneMg4BcwQMipgEIkfzhaUJMZ6xgHbV37vEVo2T9f';
 
-          fetch(webhookUrl, {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-              content: `📥 New Visitor Logged\n\n🌐 IP: ${ip}\n🏙️ Country/City: ${country} - ${city}\n🕒 Time: ${dateTime}`
-            })
-          });
-        });
 </script>
 
 
 </body>
 </html>
-
-
